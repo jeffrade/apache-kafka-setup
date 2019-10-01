@@ -1,2 +1,29 @@
 # apache-kafka-setup
 Repository for setting up and running Apache Kafka
+
+## Install
+Run the following scripts in order:
+```
+$ ./install/install_zookeeper.sh
+$ ./install/install_kafka_server.sh
+$ ./install/kafka_topic_create.sh my-test-topic
+```
+
+## Usage
+To start Kafka:
+```
+$ ./install/kafka_start.sh
+```
+
+Then, start a consumer:
+```
+$ $KAFKA_HOME/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my-test-topic
+```
+
+Then (in another terminal), start a producer and send a message:
+```
+$ $KAFKA_HOME/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic my-test-topic
+>This is a test message
+```
+
+You'll see the message in your consumer terminal.
